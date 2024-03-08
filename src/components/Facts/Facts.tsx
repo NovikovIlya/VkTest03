@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import styles from './Facts.module.scss';
-import { Button } from 'antd';
+import {Button} from '@vkontakte/vkui';
 
 function Facts() {
   const [text, setText] = useState('');
@@ -51,7 +51,7 @@ function Facts() {
           value={text}></textarea>
 
         <div className={styles.btns}>
-          <Button onClick={() => refetch()} type="primary">
+          <Button onClick={() => refetch()} >
             Получить факт!
           </Button>
         </div>

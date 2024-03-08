@@ -3,6 +3,7 @@ import styles from './FormComponent.module.scss';
 import { useQuery } from '@tanstack/react-query';
 import type { ChangeEvent } from 'react';
 import axios from 'axios';
+import {Button} from '@vkontakte/vkui';
 
 import { useDebounce } from 'usehooks-ts';
 
@@ -60,7 +61,7 @@ const FormComponent = () => {
     <div>
       <form>
         <input type="text" value={value} onChange={handleChange} />
-        <button onClick={handleButton}>Отправить</button>
+        <Button onClick={handleButton}>Отправить</Button>
       </form>
       <div>{data?.age}</div>
     </div>
