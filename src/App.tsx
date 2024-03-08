@@ -1,21 +1,21 @@
-import { useState } from 'react'
-import './App.css'
-import { Button, Flex, Input  } from 'antd';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+import './App.css';
+import Facts from './components/Facts/Facts';
+import FormComponent from './components/Form/FormComponent';
 
-const { TextArea } = Input;
-
+const queryClient = new QueryClient();
 function App() {
-  
-  const fetch =async()=>{
-
-  }
   return (
     <>
-      <Button onClick={fetch} type="primary">Получить факт!</Button>
-      <textarea >
-      </textarea>
+      <QueryClientProvider client={queryClient}>
+        <Facts />
+        <FormComponent/>
+      </QueryClientProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
