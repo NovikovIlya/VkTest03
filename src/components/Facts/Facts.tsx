@@ -4,25 +4,17 @@ import styles from './Facts.module.scss';
 import {Button} from '@vkontakte/vkui';
 
 function Facts() {
+  // Стейты
   const [text, setText] = useState('');
+
   // Hooks
-  const { refetch, data } = useQuery({
+  const { refetch } = useQuery({
     queryKey: ['todos'],
     queryFn: () => fetchFacts(),
     enabled: false,
   });
 
-  const fetchFacts = async () => {
-    try {
-      const response = await fetch('https://catfact.ninja/fact');
-      const data = await response.json();
-      setText(data.fact);
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  //// Реализация установки курсора после первого слова
   useEffect(() => {
     if (text !== '') {
       const num = text.split(' ')[0].length;
@@ -36,11 +28,24 @@ function Facts() {
     }
   }, [text]);
 
+  // Функции
+  //// Получение данных
+  const fetchFacts = async () => {
+    try {
+      const response = await fetch('https://catfact.ninja/fact');
+      const data = await response.json();
+      setText(data.fact);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //// Сбор в стейт
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
 
-  console.log(data);
   return (
     <>
       <div className={styles.container}>
