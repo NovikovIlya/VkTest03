@@ -30,6 +30,7 @@ const FormComponent = () => {
       example: '',
     },
   });
+
   //// Отправка запроса
   const { refetch, data } = useQuery({
     queryKey: ['todos', value],
@@ -37,6 +38,7 @@ const FormComponent = () => {
     queryFn: ({ signal }) => fetchName({ signal }, value),
     enabled: false,
   });
+
   //// Дебаунс запроса
   useEffect(() => {
     if (value) {
@@ -47,7 +49,8 @@ const FormComponent = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
-  //// Просмотр на полем
+
+  //// Просмотр за полем
   useEffect(() => {
     setValue(watch('example'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,6 +68,7 @@ const FormComponent = () => {
       console.log(error);
     }
   };
+  
   //// "Отправить"
   const handleButton: SubmitHandler<Inputs> = (data) => {
     console.log(data.example);
